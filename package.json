@@ -6,11 +6,8 @@
     "node": "12 || 14"
   },
   "scripts": {
-    "dev": "concurrently \"yarn start\" \"yarn start-backend\"",
     "start": "yarn workspace app start",
-    "start-backend": "yarn workspace backend start",
     "build": "lerna run build",
-    "build-image": "yarn workspace backend build-image",
     "tsc": "tsc",
     "tsc:full": "tsc --skipLibCheck false --incremental false",
     "clean": "backstage-cli clean && lerna run clean",

@@ -3,8 +3,7 @@
   "include": [
     "packages/*/src",
     "plugins/*/src",
-    "plugins/*/dev",
-    "plugins/*/migrations"
+    "plugins/*/dev"
   ],
   "exclude": ["node_modules"],
   "compilerOptions": {
