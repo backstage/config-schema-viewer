@@ -1,0 +1,203 @@
+{
+  "schemas": [
+    {
+      "value": {
+        "$schema": "https://backstage.io/schema/config-v1",
+        "title": "@backstage/cli",
+        "type": "object",
+        "properties": {
+          "app": {
+            "type": "object",
+            "properties": {
+              "baseUrl": {
+                "type": "string",
+                "visibility": "frontend"
+              },
+              "title": {
+                "type": "string",
+                "visibility": "frontend"
+              },
+              "googleAnalyticsTrackingId": {
+                "type": "string",
+                "visibility": "frontend",
+                "description": "Tracking ID for Google Analytics",
+                "examples": [
+                  "UA-000000-0"
+                ]
+              },
+              "listen": {
+                "type": "object",
+                "description": "Listening configuration for local development",
+                "properties": {
+                  "host": {
+                    "type": "string",
+                    "visibility": "frontend",
+                    "description": "The host that the frontend should be bound to. Only used for local development."
+                  },
+                  "port": {
+                    "type": "number",
+                    "visibility": "frontend",
+                    "description": "The port that the frontend should be bound to. Only used for local development."
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "path": "../../node_modules/@backstage/cli/package.json"
+    },
+    {
+      "path": "../../node_modules/@backstage/core/config.d.ts",
+      "value": {
+        "type": "object",
+        "properties": {
+          "app": {
+            "description": "Generic frontend configuration.",
+            "type": "object",
+            "properties": {
+              "baseUrl": {
+                "description": "The public absolute root URL that the frontend.",
+                "visibility": "frontend",
+                "type": "string"
+              },
+              "title": {
+                "description": "The title of the app.",
+                "visibility": "frontend",
+                "type": "string"
+              },
+              "support": {
+                "description": "Information about support of this Backstage instance and how to contact the integrator team.",
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "description": "The primary support url.",
+                    "visibility": "frontend",
+                    "type": "string"
+                  },
+                  "items": {
+                    "description": "A list of categorized support item groupings.",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "description": "The title of the support item grouping.",
+                          "visibility": "frontend",
+                          "type": "string"
+                        },
+                        "icon": {
+                          "description": "An optional icon for the support item grouping.",
+                          "visibility": "frontend",
+                          "type": "string"
+                        },
+                        "links": {
+                          "description": "A list of support links for the Backstage instance.",
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "url": {
+                                "visibility": "frontend",
+                                "type": "string"
+                              },
+                              "title": {
+                                "visibility": "frontend",
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "url"
+                            ]
+                          }
+                        }
+                      },
+                      "required": [
+                        "links",
+                        "title"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "items",
+                  "url"
+                ]
+              }
+            },
+            "required": [
+              "baseUrl"
+            ]
+          },
+          "backend": {
+            "description": "Generic backend configuration.",
+            "type": "object",
+            "properties": {
+              "baseUrl": {
+                "description": "The public absolute root URL that the backend is reachable at.",
+                "visibility": "frontend",
+                "type": "string"
+              }
+            },
+            "required": [
+              "baseUrl"
+            ]
+          },
+          "organization": {
+            "description": "Configuration that provides information about the organization that the app is for.",
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "The name of the organization that the app belongs to.",
+                "visibility": "frontend",
+                "type": "string"
+              }
+            }
+          },
+          "homepage": {
+            "type": "object",
+            "properties": {
+              "clocks": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "visibility": "frontend",
+                      "type": "string"
+                    },
+                    "timezone": {
+                      "visibility": "frontend",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "label",
+                    "timezone"
+                  ]
+                }
+              }
+            }
+          },
+          "auth": {
+            "description": "Configuration that provides information on available authentication providers configured for app",
+            "type": "object",
+            "properties": {
+              "environment": {
+                "description": "The 'environment' attribute added as an optional parameter to have configurable environment value for `auth.providers`.\ndefault value: 'development'\noptional values: 'development' | 'production'",
+                "visibility": "frontend",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "required": [
+          "app",
+          "backend"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    }
+  ],
+  "backstageConfigSchemaVersion": 1
+}
