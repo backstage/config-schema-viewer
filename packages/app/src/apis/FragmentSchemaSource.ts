@@ -9,6 +9,10 @@ export class FragmentSchemaSource implements ConfigSchemaApi {
   schema$(): Observable<ConfigSchemaResult> {
     return new ObservableImpl(subscriber => {
       const { hash } = location;
+      if (!hash) {
+        subscriber.next({ schema: undefined });
+        return;
+      }
       if (!hash.startsWith('#schema=')) {
         subscriber.error(new Error('Configuration schema fragment is invalid'));
         return;
