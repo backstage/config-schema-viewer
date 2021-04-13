@@ -1,12 +1,8 @@
-import { Observable } from '@backstage/core-api';
-import {
-  ConfigSchemaApi,
-  ConfigSchemaResult,
-} from '@backstage/plugin-config-schema';
+import { ConfigSchemaApi } from '@backstage/plugin-config-schema';
 import ObservableImpl from 'zen-observable';
 
 export class FragmentSchemaSource implements ConfigSchemaApi {
-  schema$(): Observable<ConfigSchemaResult> {
+  schema$: ConfigSchemaApi['schema$'] = () => {
     return new ObservableImpl(subscriber => {
       const { hash } = location;
       if (!hash) {
@@ -31,5 +27,5 @@ export class FragmentSchemaSource implements ConfigSchemaApi {
         );
       }
     });
-  }
+  };
 }
